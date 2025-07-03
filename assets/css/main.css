@@ -758,144 +758,67 @@ section,
   position: relative;
 }
 
-.section-title h2:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: var(--accent-color);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
+
 
 .section-title p {
   margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
-# he Section
---------------------------------------------------------------*/
+/* Hero Section */
 #hero {
+  position: relative;
   width: 100%;
   height: 100vh;
-background-image: url('./assets/img/HERO.jpeg');
-width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+}
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.hero-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .hero-content {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
 }
 
-#hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 100px;
-  color: white;
-  letter-spacing: 3px;
-  white-space: nowrap;
-  margin-bottom: 20px;
-}
-
-#hero p {
-  font-size: 24px;
-  color: white;
-}
-
-.hero .btn-get-started {
-  color: var(--contrast-color);
-  font-family: var(--heading-font);
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 10px 36px;
-  border-radius: 4px;
-  transition: 0.5s;
-  border: 2px solid var(--contrast-color);
-}
-
-.hero .btn-get-started:hover {
-  color: var(--accent-color);
-  background: var(--contrast-color);
-}
-
-.hero .btn-watch-video {
-  font-size: 16px;
-  transition: 0.5s;
-  margin-left: 25px;
-  color: var(--default-color);
-  font-weight: 600;
-}
-
-.hero .btn-watch-video i {
-  color: var(--accent-color);
+.hero-subtitle {
   font-size: 32px;
-  transition: 0.3s;
-  line-height: 0;
-  margin-right: 8px;
+  margin-bottom: 20px;
+  color: white;
 }
 
-.hero .btn-watch-video:hover {
-  color: var(--accent-color);
+.btn-hero {
+  font-size: 16px;
+  padding: 12px 28px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.hero .btn-watch-video:hover i {
-  color: color-mix(in srgb, var(--accent-color), transparent 15%);
+.btn-hero:hover {
+  background: white;
+  color: black;
 }
 
-.hero .animated {
-  animation: up-down 2s ease-in-out infinite alternate-reverse both;
-}
-
-@media (max-width: 640px) {
-  .hero h1 {
-    font-size: 28px;
-    line-height: 36px;
-  }
-
-  .hero p {
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 30px;
-  }
-
-  .hero .btn-get-started,
-  .hero .btn-watch-video {
-    font-size: 13px;
-  }
-}
-
-@keyframes up-down {
-  0% {
-    transform: translateY(10px);
-  }
-
-  100% {
-    transform: translateY(-10px);
-  }
-}
-
-/*--------------------------------------------------------------
-/* Imagen como fondo o GIF que se adapta */
-.about-gif img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px; /* o 12px si querés esquinas redondeadas */
-}
 
 
 /*--------------------------------------------------------------
@@ -903,7 +826,7 @@ width: 100%;
 --------------------------------------------------------------*/
 
 .about .content h3 {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
   color: rgb(0, 0, 0);
@@ -925,7 +848,7 @@ width: 100%;
 
 .about .content ul i {
    font-size: 24px;
-  color: #ff0000; /* negro */
+  color: #000000; /* negro */
   margin-top: 4px;
 }
 
@@ -935,9 +858,10 @@ width: 100%;
 }
 
 .about .content ul .title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   color: rgb(0, 0, 0);
+  font-weight: 900; /* Inter Black */
   margin-bottom: 2px;
   letter-spacing: 1px;
 }
@@ -947,9 +871,86 @@ width: 100%;
   font-size: 14px;
   color: rgb(0, 0, 0);
   opacity: 0.9;
+  font-weight: 500; /* Inter Medium */
   margin: 0;
   line-height: 1.5;
 }
+
+
+
+.about-gif {
+  position: relative;
+  height: 440px; /* Reducí este valor hasta que te guste */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.about-gif img {
+  width: 100%;
+  height: 100%;         /* Este es el cambio clave */
+  object-fit: cover;    /* Así no se deforma */
+  border-radius: 12px;
+}
+
+
+.about-gif .content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  color: white;
+  background: none; /* Sin degradado */
+}
+
+.about-gif .content-overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-gif .content-overlay ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 24px; /* antes 20px, o más si querés más aire */
+}
+
+.about-gif .content-overlay h3 {
+ color: white !important;
+ font-size: 45px;
+}
+
+
+.about-gif .content-overlay i {
+  color: white !important;
+}
+
+
+.about-gif .content-overlay .title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 900 !important; /* Inter Black */
+  font-size: 20px;
+  color: white;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+
+.about-gif .content-overlay .description {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important; /* Inter Medium */
+  font-size: 13px;
+  color: white;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
 
 /* Botón "Conocé más características" si lo usás */
 .about .content .read-more {
@@ -1086,10 +1087,17 @@ width: 100%;
 /*--------------------------------------------------------------
 # Features Section
 --------------------------------------------------------------*/
-.features .features-image {
-  position: relative;
-  min-height: 400px;
+
+.features .section-title {
+  text-align: left;
 }
+
+
+.features .features-image img {
+  width: 120%; /* más grande pero manteniendo el contenedor */
+  max-width: none;
+}
+
 
 .features .features-item h4 {
   font-size: 20px;
@@ -1102,7 +1110,7 @@ width: 100%;
 
 .features .features-item i {
   font-size: 48px;
-  color: var(--accent-color);
+  color: #000000; /* negro */
   margin-right: 20px;
   line-height: 0;
 }
@@ -1290,6 +1298,14 @@ width: 100%;
 /*--------------------------------------------------------------
 # Pricing Section
 --------------------------------------------------------------*/
+
+.pricing .icon-top i {
+  font-size: 48px;
+  color:#000000;
+  display: inline-block;
+}
+
+
 .pricing .pricing-item {
   background-color: var(--surface-color);
   box-shadow: 0 3px 20px -2px rgba(0, 0, 0, 0.1);
@@ -1299,11 +1315,28 @@ width: 100%;
   border-radius: 5px;
 }
 
-.pricing h3 {
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 20px;
+
+.pricing .section-title {
+  text-align: left;
 }
+
+
+.pricing ul i {
+  color: #000000;
+}
+
+
+
+
+.pricing h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 26px;
+  font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+
+}
+
 
 .pricing h4 {
   color: var(--accent-color);
@@ -1343,7 +1376,8 @@ width: 100%;
 }
 
 .pricing ul .na {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
+  color:#000000
+  
 }
 
 .pricing ul .na i {
@@ -1351,7 +1385,8 @@ width: 100%;
 }
 
 .pricing ul .na span {
-  text-decoration: line-through;
+   text-decoration: none;
+  color: #000;
 }
 
 .pricing .buy-btn {
@@ -1487,65 +1522,70 @@ width: 100%;
   color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Team Section
---------------------------------------------------------------*/
+/* Cards uniformes y centradas */
 .team .team-member {
   padding: 25px;
   border-radius: 8px;
   transition: transform 0.3s ease;
-}
-
-/* Imagen más grande */
-.team .team-member .member-img {
-  height: 320px; /* antes 250px */
-  overflow: hidden;
-  position: relative;
-}
-
-/* Imagen ajustada */
-.team .team-member .member-img img {
-  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* Imagen con altura consistente */
+.team .member-img {
+  height: 220px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.team .member-img img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
   display: block;
 }
 
-/* Título más grande */
+/* Texto consistente */
 .team .team-member .member-info h4 {
-  font-size: 40px; /* antes 35px */
-  margin-bottom: 2px;
+  font-size: 24px;
   font-family: 'Bebas Neue', sans-serif;
-  color: #060606;
+  margin: 0;
+  color: #000;
 }
 
-/* Rol */
-.team .team-member .member-info span {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px; /* antes 14px */
-  font-weight: 400;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-}
-
-/* Descripción */
 .team .team-member .member-info p {
+  font-size: 18px;
   font-family: 'Inter', sans-serif;
-  font-size: 22px; /* antes 20px */
-  line-height: 30px;
-  padding-top: 1px;
+  margin: 5px 0 10px;
+  color: #000;
+}
+
+/* Eliminar redes */
+.team .social {
+  display: none !important;
+}
+
+
+
+.team .member-info h4 {
+  font-size: 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-bottom: 6px;
+}
+
+.team .member-info p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  margin: 0;
   color: #060606;
-}
-
-
-.team .team-member:hover {
-  transform: scale(1.08);
-  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
-}
-
-.team .team-member:hover .social {
-  right: 8px;
-  opacity: 1;
 }
 
 /*--------------------------------------------------------------
